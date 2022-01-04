@@ -11,7 +11,7 @@ const Dashboard = () => {
     const [data, setData] = useState([]);
     const [modal,setModal] = useState(false);
     const [status,setStatus] = useState()
-    const time = 30000;
+    const time = 60000;
 
     useEffect(() => {
       const load = setInterval(() => {
