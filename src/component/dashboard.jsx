@@ -24,8 +24,7 @@ const Dashboard = () => {
       }, time);
       return() => clearInterval(load);
     }, [data]);
-
-    
+  
     const capitalize = (string) => {
         return string.charAt(0).toUpperCase() + string.slice(1);
       }
@@ -83,6 +82,9 @@ const Dashboard = () => {
             >
               <Modal.Body className="fs-2 text-center">
                 {status}
+              </Modal.Body>
+              <Modal.Body>
+                {}
               </Modal.Body>
               <Modal.Footer>
                 <Button variant="secondary" onClick={closeModal}>
