@@ -13,18 +13,40 @@ const Dashboard = () => {
     const [status,setStatus] = useState()
     const time = 60000;
 
+    //O primeiro useEffet faz o primeiro get
+
+    useEffect(() => {
+      api.get(`http://191.252.93.122/desafio-front-end/api/index.php`).then((res) => {
+            console.log(res.data);
+            setData(res.data);
+        })
+    }, []);
+
+    //O segundo por causa do setInteval, não invoca a função quando o component, apenas após correr o tempo do time.
+    //Assim o segundo serve para fazer as requisições a cada 60 segundo sem recarregar a página.
+
     useEffect(() => {
       const load = setInterval(() => {
-          return (
-              api.get(`http://191.252.93.122/desafio-front-end/api/index.php`).then((res) => {
-                  console.log(res.data);
-                  setData(res.data);
-              })   
-          )
+        api.get(`http://191.252.93.122/desafio-front-end/api/index.php`).then((res) => {
+            console.log(res.data);
+            setData(res.data);
+        })
       }, time);
       return() => clearInterval(load);
     }, [data]);
-  
+
+    
+
+    //useEffect(() => {
+    //  const load = () => {
+    //    api.get(`http://191.252.93.122/desafio-front-end/api/index.php`).then((res) => {
+    //        console.log(res.data);
+    //        setData(res.data);
+    //    })
+    //  }
+    //  setTimeout(load, time);
+    //}, [data]);
+
     const capitalize = (string) => {
         return string.charAt(0).toUpperCase() + string.slice(1);
       }
@@ -82,9 +104,6 @@ const Dashboard = () => {
             >
               <Modal.Body className="fs-2 text-center">
                 {status}
-              </Modal.Body>
-              <Modal.Body>
-                {}
               </Modal.Body>
               <Modal.Footer>
                 <Button variant="secondary" onClick={closeModal}>
