@@ -35,18 +35,6 @@ const Dashboard = () => {
       return() => clearInterval(load);
     }, [data]);
 
-    
-
-    //useEffect(() => {
-    //  const load = () => {
-    //    api.get(`http://191.252.93.122/desafio-front-end/api/index.php`).then((res) => {
-    //        console.log(res.data);
-    //        setData(res.data);
-    //    })
-    //  }
-    //  setTimeout(load, time);
-    //}, [data]);
-
     const capitalize = (string) => {
         return string.charAt(0).toUpperCase() + string.slice(1);
       }
